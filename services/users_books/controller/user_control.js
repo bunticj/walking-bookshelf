@@ -12,6 +12,7 @@ module.exports.getSingleUser = (req,res,next)=>{
     
     userModel.singleUser(req.params.userId)
     .then(resolve => {
+        console.log(req.params.userId);
         console.log(resolve);
         res.status(200).json(resolve);
     })
@@ -28,5 +29,4 @@ module.exports.addUser = (req,res,next)=>{
     })
     .catch(err => console.log(err));
    
-    
 }

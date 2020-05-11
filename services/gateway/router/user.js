@@ -7,7 +7,10 @@ const url = 'http://localhost:4000'
 router.get('/users', (req, res) => {
  sendRequest.get(url+req.path,res);
 });
-
+router.get('/users/:userId', (req, res) => {
+    sendRequest.get(url+req.path,res);
+   });
+   
 router.post('/register',user_control.addUser);
 
 
