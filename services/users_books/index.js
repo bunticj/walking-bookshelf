@@ -2,7 +2,7 @@ const express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
-    userRoutes = require('./router/user_routes.js'),
+    userRoutes = require('./router/user.js'),
     port = process.env.PORT || 4000;
 
 require('dotenv').config();

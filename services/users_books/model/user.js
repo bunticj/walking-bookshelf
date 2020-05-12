@@ -34,10 +34,8 @@ module.exports.newUser = (data) => {
   let pr = new Promise((resolve, reject) => {
     prResolve = resolve;
   });
-
-
-    let sqlQuery = `INSERT INTO users (user_id, first_name, last_name) VALUES (?,?,?) `;
-    let params = [data._id, data.first_name, data.last_name];
+    let sqlQuery = `INSERT INTO users (user_id, first_name, last_name, email) VALUES (?,?,?,?) `;
+    let params = [data._id, data.first_name, data.last_name, data.email];
     db.connection.query(sqlQuery, params, (err, result) => {
       if (err) throw err;
       prResolve(result);    
