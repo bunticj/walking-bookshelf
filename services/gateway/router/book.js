@@ -11,4 +11,9 @@ router.get('/books/:bookId', authCheck, (req, res) => {
     sendRequest.get(url+req.path,res);
    });
    
+router.post('/books',authCheck,(req,res) => {
+    const bodyData = req.body;
+    bodyData.owner_id = req.userData._id;
+    sendRequest.post(url + req.path, bodyData,res);
+})
 module.exports = router;
