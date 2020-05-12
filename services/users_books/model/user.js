@@ -21,7 +21,7 @@ module.exports.singleUser = (id) => {
   let pr = new Promise((resolve, reject) => {
     prResolve = resolve;
   });
-  let sqlQuery = `SELECT * FROM users WHERE user_id="${id}";`;
+  let sqlQuery = `SELECT * FROM users WHERE user_id="${id}"`;
   db.connection.query(sqlQuery, (error, result) => {
     if (error) console.log(error);
     prResolve(result);
