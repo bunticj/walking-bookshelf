@@ -18,3 +18,14 @@ module.exports.getSingleBook = (req, res, next) => {
         })
         .catch(err => console.log(err));
 }
+module.exports.addBook = (req, res, next) => {
+    bookModel.newBook(req.body)
+    .then(resolve => {
+        res.status(201).json({
+            message: 'Book created',
+            data: req.body
+        });
+    })
+    .catch(err => console.log(err));
+   
+}
