@@ -16,3 +16,13 @@ module.exports = (req, res, next) => {
         });
     }
 }
+module.exports.signToken = (user) => {
+   return jwt.sign({
+        email: user.email,
+        _id: user._id,
+        user_role : user.user_type
+    }, process.env.JWT_KEY, {
+        expiresIn: 86400
+    });
+
+}  

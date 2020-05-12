@@ -14,6 +14,6 @@ router.get('/users/:userId', (req, res) => {
    });
    
 router.post('/register',validator.userValidation(),validator.validate,user_control.addUser);
-
+router.post('/login',user_control.loginUser);
 
 module.exports = router;
