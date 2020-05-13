@@ -10,7 +10,7 @@ module.exports.get = (_url, res) => {
         })
         .catch(err => {
             throw err;
-        }); 
+        });
 
 };
 module.exports.post = (_url, body, res) => {
@@ -26,3 +26,16 @@ module.exports.post = (_url, body, res) => {
             throw err;
         });
 };
+
+module.exports.patch = (_url, body, res) => {
+    axios.request({
+        method: 'patch',
+        url: _url,
+        data: body
+    }).then(response => {
+        res.send(response.data);
+    }).catch(err => {
+        throw err
+
+    });
+}

@@ -12,8 +12,15 @@ router.get('/books/:bookId', authCheck, (req, res) => {
    });
    
 router.post('/books',authCheck,(req,res) => {
-    const bodyData = req.body;
-    bodyData.owner_id = req.userData._id;
+    let bodyData = req.body;
+    bodyData.payload = req.userData;
     sendRequest.post(url + req.path, bodyData,res);
-})
+});
+
+router.patch('/books/:bookId', authCheck, (req,res)=> {
+    let bodyData = req.body;
+    bodyData.payload = req.userData;
+
+    sendRequest.patch(url+req.path,bodyData,res);
+});
 module.exports = router;
