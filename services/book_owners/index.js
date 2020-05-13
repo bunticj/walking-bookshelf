@@ -21,5 +21,5 @@ app.use(cors());
 app.use('/',userRoutes);
 app.use('/',bookRoutes);
 
-app.listen(port, () => console.log(`App listening on port ${port}`));
+app.listen(port, () => console.log(`book_owners service listening on port ${port}`));
 
