@@ -56,3 +56,17 @@ module.exports.updateBook = (data, id) => {
     });
     return pr;
 }
+
+module.exports.removeBook = (id) => {
+    let prResolve;
+    let pr = new Promise(resolve => {
+        prResolve = resolve;
+    });
+
+    let sqlQuery = `DELETE FROM books WHERE book_id="${id}"`;
+    db.connection.query(sqlQuery,(err, result) =>{
+        if (err) throw err;
+        prResolve(result);
+    });
+    return pr;
+}

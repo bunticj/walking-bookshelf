@@ -12,7 +12,6 @@ module.exports.getBooks = (req, res, next) => {
 module.exports.getSingleBook = (req, res, next) => {
     bookModel.singleBook(req.params.bookId)
         .then(resolve => {
-            console.log(req.params.bookId);
             console.log(resolve);
             res.status(200).send(JSON.stringify(resolve));
         })
@@ -45,9 +44,27 @@ module.exports.patchBook = (req, res, next) => {
                     .catch(err => console.log(err));
                
             } else {
-                console.log('nije prosao uvjet');
-                res.status(403).send('You are not authorized to update this book');
+                res.status(403).send('Unauthorized');
             }
 
         }).catch(err => console.log(err));
+}
+
+module.exports.deleteBook = (req,res,next) => {
+    bookModel.singleBook(req.params.bookId)
+    .then(resolve => {
+        const singleBookObj = resolve[0];
+       console.log(singleBookObj.owner_id, req.body.payload._id);
+        if (singleBookObj.owner_id.toString() === req.body.payload._id.toString()) {
+            bookModel.removeBook(req.params.bookId)
+                .then(result => {
+                    res.status(200).json(result)
+                })
+                .catch(err => console.log(err));
+           
+        } else {
+            res.status(403).send('Unauthorized');
+        }
+
+    }).catch(err => console.log(err));
 }

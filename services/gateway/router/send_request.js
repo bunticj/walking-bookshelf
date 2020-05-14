@@ -8,8 +8,23 @@ module.exports.get = (_url, res) => {
         .then(response => {
             res.send(response.data)
         })
-        .catch(err => {
-            throw err;
+        .catch(error => {
+            if (error.response) {
+                // Request made and server responded
+                res.json({
+                    Status: error.response.status,
+                    Headers: error.response.headers,
+                    Data: error.response.data
+                });
+
+            } else if (error.request) {
+                // The request was made but no response was received
+                res.send(error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                res.status(500).send('Internal error');
+            }
+
         });
 
 };
@@ -22,20 +37,76 @@ module.exports.post = (_url, body, res) => {
         .then(response => {
             res.send(response.data)
         })
-        .catch(err => {
-            throw err;
+        .catch(error => {
+            if (error.response) {
+                // Request made and server responded
+                res.json({
+                    Status: error.response.status,
+                    Headers: error.response.headers,
+                    Data: error.response.data
+                });
+
+            } else if (error.request) {
+                // The request was made but no response was received
+                res.send(error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                res.status(500).send('Internal error');
+            }
+
         });
-};
+}
 
 module.exports.patch = (_url, body, res) => {
     axios.request({
-        method: 'patch',
-        url: _url,
-        data: body
-    }).then(response => {
-        res.send(response.data);
-    }).catch(err => {
-        throw err
+            method: 'patch',
+            url: _url,
+            data: body
+        })
+        .then(response => res.send(response.data))
+        .catch(error => {
+            if (error.response) {
+                // Request made and server responded
+                res.json({
+                    Status: error.response.status,
+                    Headers: error.response.headers,
+                    Data: error.response.data
+                });
 
-    });
+            } else if (error.request) {
+                // The request was made but no response was received
+                res.send(error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                res.status(500).send('Internal error');
+            }
+
+        });
+}
+
+module.exports.delete = (_url, body, res) => {
+    axios.request({
+            method: 'delete',
+            url: _url,
+            data: body
+        })
+        .then(response => res.send(response.data))
+        .catch(error => {
+            if (error.response) {
+                // Request made and server responded
+                res.json({
+                    Status: error.response.status,
+                    Headers: error.response.headers,
+                    Data: error.response.data
+                });
+
+            } else if (error.request) {
+                // The request was made but no response was received
+                res.send(error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                res.status(500).send('Internal error');
+            }
+
+        });
 }

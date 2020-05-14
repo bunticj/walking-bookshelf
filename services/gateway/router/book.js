@@ -23,4 +23,12 @@ router.patch('/books/:bookId', authCheck, (req,res)=> {
 
     sendRequest.patch(url+req.path,bodyData,res);
 });
+
+router.delete('/books/:bookId', authCheck, (req, res) => {
+    let bodyData = req.body;
+    bodyData.payload = req.userData;
+
+    sendRequest.delete(url + req.path, bodyData, res);
+});
+
 module.exports = router;
