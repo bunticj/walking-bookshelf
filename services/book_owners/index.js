@@ -9,13 +9,12 @@ const express = require('express'),
 require('dotenv').config();
 
 app = express();
-
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-app.use(cors({origin: 'http://localhost:4000/'}));
+app.use(cors({origin: 'http://localhost:3000/'}));
 
 //Routes
 app.use('/',userRoutes);
