@@ -2,10 +2,10 @@ const express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
-    db_connect = require('./db_connect'),
     router = require('./router/router');
 
 require('dotenv').config()
+const db_connect = require('./db_connect');
 
 app = express();
 app.use(logger('dev'));

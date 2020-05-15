@@ -2,10 +2,10 @@ const express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
-    port = process.env.PORT || 4001,
-    db_connect = require('./db_connect');
+    port = process.env.PORT || 4001;
 
 require('dotenv').config();
+const db_connect = require('./db_connect');
 
 app = express();
 app.use(logger('dev'));
