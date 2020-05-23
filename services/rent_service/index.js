@@ -2,8 +2,8 @@ const express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
-    port = process.env.PORT || 4001;
-
+    port = process.env.PORT || 4001,
+    orderRoutes = require('./router/order');
 require('dotenv').config();
 const db_connect = require('./db_connect');
 
@@ -17,4 +17,5 @@ app.use(cors({
     origin: 'http://localhost:3000/'
 }));
 
+app.use('/', orderRoutes)
 app.listen(port, () => console.log(`rent_service listening on port ${port}`));

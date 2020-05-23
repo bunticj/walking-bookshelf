@@ -13,7 +13,6 @@ module.exports.get = (_url, res) => {
                 // Request made and server responded
                 res.json({
                     Status: error.response.status,
-                    Headers: error.response.headers,
                     Data: error.response.data
                 });
 
@@ -42,7 +41,6 @@ module.exports.post = (_url, body, res) => {
                 // Request made and server responded
                 res.json({
                     Status: error.response.status,
-                    Headers: error.response.headers,
                     Data: error.response.data
                 });
 
@@ -69,7 +67,6 @@ module.exports.patch = (_url, body, res) => {
                 // Request made and server responded
                 res.json({
                     Status: error.response.status,
-                    Headers: error.response.headers,
                     Data: error.response.data
                 });
 
@@ -96,7 +93,6 @@ module.exports.delete = (_url, body, res) => {
                 // Request made and server responded
                 res.json({
                     Status: error.response.status,
-                    Headers: error.response.headers,
                     Data: error.response.data
                 });
 

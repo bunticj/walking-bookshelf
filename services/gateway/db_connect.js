@@ -12,4 +12,4 @@ mongoose.connect(`${uri}`, {
   .catch(error => {
     console.log('Connection failed!');
     console.log(error);
-  });;
+  });
